@@ -2,16 +2,17 @@ package app
 
 import (
 	"flag"
-	"github.com/AlexxIT/go2rtc/pkg/shell"
-	"github.com/rs/zerolog"
-	"github.com/rs/zerolog/log"
-	"gopkg.in/yaml.v3"
 	"io"
 	"os"
 	"path/filepath"
 	"runtime"
 	"strings"
 	"time"
+
+	"github.com/AlexxIT/go2rtc/pkg/shell"
+	"github.com/rs/zerolog"
+	"github.com/rs/zerolog/log"
+	"gopkg.in/yaml.v3"
 )
 
 var Version = "1.2.0"
@@ -29,7 +30,7 @@ func Init() {
 	flag.Parse()
 
 	if confs == nil {
-		confs = []string{"go2rtc.yaml"}
+		confs = []string{"config.yaml"}
 	}
 
 	for _, conf := range confs {
@@ -70,7 +71,6 @@ func Init() {
 	log.Logger = NewLogger(cfg.Mod["format"], cfg.Mod["level"])
 
 	modules = cfg.Mod
-
 	log.Info().Msgf("go2rtc version %s %s/%s", Version, runtime.GOOS, runtime.GOARCH)
 }
 

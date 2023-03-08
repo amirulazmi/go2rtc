@@ -2,14 +2,15 @@ package api
 
 import (
 	"encoding/json"
-	"github.com/AlexxIT/go2rtc/cmd/app"
-	"github.com/rs/zerolog"
 	"net"
 	"net/http"
 	"os"
 	"strconv"
 	"strings"
 	"sync"
+
+	"github.com/AlexxIT/go2rtc/cmd/app"
+	"github.com/rs/zerolog"
 )
 
 func Init() {
@@ -37,6 +38,7 @@ func Init() {
 	basePath = cfg.Mod.BasePath
 	log = app.GetLogger("api")
 
+	log.Info().Msgf("Application URL: http://localhost%s", cfg.Mod.Listen)
 	initStatic(cfg.Mod.StaticDir)
 	initWS(cfg.Mod.Origin)
 
